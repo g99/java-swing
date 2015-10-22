@@ -18,25 +18,13 @@ public class LottoUI extends JFrame implements ActionListener{
 	ImageIcon icon;
 	List<JButton> btns;
 	public LottoUI() {
-		// 부품 준비 - 큰것에서 작은것 순으로
-		this.setTitle("SBS 로또추첨");
-		lotto = new Lotto();
-		btns = new ArrayList<JButton>();
-		panelNorth = new JPanel();
-		panelSouth = new JPanel();
-		btn = new JButton("로또 추첨 번호");
-		// 조립 단계 - 작은것부터 큰것 순으로
-		btn.addActionListener(this); // 이 클래스에서 구현한 관련 메소드를 할당한다.
-		panelNorth.add(btn); // 북쪽 패널에 버튼을 장착
-		this.add(panelNorth, BorderLayout.NORTH);
-		this.add(panelSouth, BorderLayout.SOUTH);
-		this.setBounds(300, 400, 1200, 300);
-		// 300, 400 은 x, y 좌표값
-		// 1200, 300은 픽셀로 크기
-		this.setVisible(true);
-		
+		init();
 		
 	}
+	
+	public void init(){
+	}// initialize의 약자로 초기화 메소드 이름으로 많이 사용함
+
 
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
@@ -51,7 +39,8 @@ public class LottoUI extends JFrame implements ActionListener{
 		lotto.setLotto(); // 로또볼 추첨에 들어갑니다.
 		int[] temp = lotto.getLotto();
 		for (int i = 0; i < temp.length; i++) {
-			btns.get(i).setIcon(new ImageIcon(""));
+			btns.get(i).setIcon(new ImageIcon("src/image/"+ temp[i]+".gif"));
 		}
+		this.setVisible(true);
 	}
 }
